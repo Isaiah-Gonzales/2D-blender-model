@@ -27,7 +27,7 @@ if st.button("Run my simulation"):
               distribution= distribution,
               numClumps=numClumps,
               sizeClumps=sizeClumps,
-              visualize=True)
+              visualize=False)
   else:
     meanAssayofSamples = blender2D(
               thiefSize=thiefSize, 
@@ -36,7 +36,7 @@ if st.button("Run my simulation"):
               blenderSize=blenderSize, 
               fillRatio=fillRatio,
               distribution= distribution,
-              visualize=True)
+              visualize=False)
   st.print("Top Position Assay = " + str(meanAssayofSamples[0]) + "%")
   st.print("Middle Position Assay = " + str(meanAssayofSamples[1]) + "%")
   st.print("Bottom Position Assay = " + str(meanAssayofSamples[2]) + "%")
