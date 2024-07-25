@@ -1,3 +1,4 @@
+import streamlit as st
 from matplotlib import pyplot as plt
 from matplotlib import colors
 import time
@@ -24,20 +25,20 @@ def blender2D(blenderSize, fillRatio,thiefSize, distribution, DL=20, particleSiz
     yAxisHalf = int(yAxisSize/2)
 
     if (xAxisSize**2) < ((xAxisSizeThief**2)*3):
-        print("Thief size too large in comparison to blender size")
+        st.write("Thief size too large in comparison to blender size")
         return
 
     #Define distributions
     if distribution == "unmixed":
-        print("loading...")
+        st.write("loading...")
         placeholderArray[yAxisHalf:,:] = percentPurityOfDS
         blenderArray = placeholderArray.copy()
 
     if distribution == "random":
-        print("loading...")
+        st.write("loading...")
         numberDSparticles = (xAxisSize**2) * (DL/100)
         if DL > 100:
-            print("DL must be less than 100")
+            st.write("DL must be less than 100")
         else:
             i = 0
             while i < numberDSparticles:
@@ -51,7 +52,7 @@ def blender2D(blenderSize, fillRatio,thiefSize, distribution, DL=20, particleSiz
             blenderArray = placeholderArray.copy()
 
     if distribution == "uniform":
-        print("loading...")
+        st.write("loading...")
         numberDSparticles = (xAxisSize**2) * (DL/100)
         frequencyOfDS = int(100/DL)
         flattenedArray = placeholderArray.flatten()
@@ -65,11 +66,11 @@ def blender2D(blenderSize, fillRatio,thiefSize, distribution, DL=20, particleSiz
         blenderArray = flattenedArray.reshape(xAxisSize, yAxisSize)
 
     if distribution == "poor":
-        print("loading...")
+        st.write("loading...")
         clumpedParticles = numClumps * sizeClumps
         flattenedArray = placeholderArray.flatten()
         if (clumpedParticles) > ((xAxisSize**2) * (DL/100)):
-            print("Number of clumped particles too great, please reduce number or size of clumps")
+            st.write("Number of clumped particles too great, please reduce number or size of clumps")
             return
         numberDSparticles = (xAxisSize**2) * (DL/100)
         possiblePositions = list(range(0, xAxisSize**2, 1))
@@ -79,7 +80,7 @@ def blender2D(blenderSize, fillRatio,thiefSize, distribution, DL=20, particleSiz
             flattenedArray[selectedPosition:selectedPosition+sizeClumps] = percentPurityOfDS
             possiblePositions[selectedPosition:selectedPosition+sizeClumps] = "x"
             possiblePositions.remove("x")
-        print("clumping complete")
+        st.write("clumping complete")
         blenderArray = flattenedArray.reshape(xAxisSize, yAxisSize)
         i = (numClumps*sizeClumps)
         while i < numberDSparticles:
@@ -90,7 +91,7 @@ def blender2D(blenderSize, fillRatio,thiefSize, distribution, DL=20, particleSiz
                 i += 1
             else:
                 pass
-        print("remaining particles dispersed")
+        st.write("remaining particles dispersed")
 
     #Sampling loops    
     samplingResults = []
@@ -113,7 +114,7 @@ def blender2D(blenderSize, fillRatio,thiefSize, distribution, DL=20, particleSiz
                 j += 1
             j = 0 #after first row, we want to grab all the values    
             i += 1
-        print(names[row] + " sampling complete.")
+        st.write(names[row] + " sampling complete.")
         samplingResults.append(np.mean(sampledValues))
 
     #Visualize
