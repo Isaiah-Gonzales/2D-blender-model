@@ -14,7 +14,7 @@ if model_type == "single run":
   distribution = st.selectbox("Please choose how you wish the powder to be distributed in the blender", ["unmixed", "random", "uniform", "poor"])
   st.write("The below inputs only matter if your distribution is **random** ")
   numClumps = st.numberinput("Number of DS clumps present", min_value = 1, help ="This will create n number of DS clump in the blender, increasing this value makes the distribution more poor")
-  sizeClumps = st.numberinput("Size of DS clumps", min value = 2, help="This will control how large the clumps of DS are, increasing this value will make the distribution more poor")
+  sizeClumps = st.numberinput("Size of DS clumps", min_value = 2, help="This will control how large the clumps of DS are, increasing this value will make the distribution more poor")
 
 if st.button("Run my simulation"):
   if distribution == "poor":
