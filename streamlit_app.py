@@ -20,7 +20,7 @@ if st.button("Run my simulation"):
   if distribution == "poor":
     meanAssayofSamples = blender2D(
               thiefSize=thiefSize, 
-              percentPurityOfDS=percentPurityOfDS,
+              percentPurityOfDS=percentPurityofDS,
               DL=DL, 
               blenderSize=blenderSize, 
               fillRatio=fillRatio,
@@ -31,7 +31,7 @@ if st.button("Run my simulation"):
   else:
     meanAssayofSamples = blender2D(
               thiefSize=thiefSize, 
-              percentPurityOfDS=percentPurityOfDS,
+              percentPurityOfDS=percentPurityofDS,
               DL=DL, 
               blenderSize=blenderSize, 
               fillRatio=fillRatio,
