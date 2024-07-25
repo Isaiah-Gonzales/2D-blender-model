@@ -119,11 +119,12 @@ def blender2D(blenderSize, fillRatio,thiefSize, distribution, DL=20, particleSiz
 
     #Visualize
     if visualize == True:
-        figure, ax = st.pyplot.subplots(figsize=(10,10))
+        figure, ax = plt.subplots(figsize=(10,10))
         viz = ax.imshow(blenderArray, interpolation='nearest', cmap='binary') #draw 2D array
         colorbar = figure.colorbar(viz)
-        st.pyplot.title("Simulated blender, distribution = " + str(distribution))    
-
+        plt.title("Simulated blender, distribution = " + str(distribution))    
+        st.pyplot(figure)
+    
     #Final Results
     meanAssays = []
     for result in samplingResults:
