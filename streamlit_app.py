@@ -35,7 +35,7 @@ if st.button("Run my simulation"):
               DL=DL, 
               blenderSize=blenderSize, 
               fillRatio=fillRatio,
-              distribution= distribution,,
+              distribution= distribution,
               visualize=True)
   st.print("Top Position Assay = " + str(meanAssayofSamples[0]) + "%")
   st.print("Middle Position Assay = " + str(meanAssayofSamples[1]) + "%")
