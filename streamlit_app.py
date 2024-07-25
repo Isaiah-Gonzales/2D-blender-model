@@ -29,7 +29,7 @@ if model_type == "mutiple runs":
     sizeClumps = st.number_input("Size of DS clumps", min_value = 2, help="This will control how large the clumps of DS are, increasing this value will make the distribution more poor")
     
 if st.button("Run my simulation"):
-  if model_type == "single run"
+  if model_type == "single run":
     if distribution == "poor":
       meanAssayofSamples = blender2D(
                 thiefSize=thiefSize, 
