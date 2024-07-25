@@ -8,7 +8,7 @@ import math
 
 #create function to return the distance from 100% assay for a given set of parameters  
 
-def blender2D(blenderSize, fillRatio,thiefSize, distribution, DL=20, particleSize=100, estimatorLoops=500, percentPurityOfDS=100, visualize=False, numClumps=10, sizeClumps=1000):
+def blender2D(blenderSize, fillRatio,thiefSize, distribution, DL=20, particleSize=100, estimatorLoops=500, percentPurityOfDS=100, visualize=False, numClumps=10, sizeClumps=1000, verbose=True):
     amountOfPowder = blenderSize * fillRatio #mL or cm3
     particleSizeInCm = particleSize / 10000 #cm
     areaOfOneParticle = particleSizeInCm**2 
@@ -30,15 +30,18 @@ def blender2D(blenderSize, fillRatio,thiefSize, distribution, DL=20, particleSiz
 
     #Define distributions
     if distribution == "unmixed":
-        st.write("loading...")
+        if verbose == True:
+            st.write("loading...")
         placeholderArray[yAxisHalf:,:] = percentPurityOfDS
         blenderArray = placeholderArray.copy()
 
     if distribution == "random":
-        st.write("loading...")
+        if verbose == True:
+            st.write("loading...")
         numberDSparticles = (xAxisSize**2) * (DL/100)
         if DL > 100:
             st.write("DL must be less than 100")
+            return
         else:
             i = 0
             while i < numberDSparticles:
@@ -52,7 +55,8 @@ def blender2D(blenderSize, fillRatio,thiefSize, distribution, DL=20, particleSiz
             blenderArray = placeholderArray.copy()
 
     if distribution == "uniform":
-        st.write("loading...")
+        if verbose == True:
+            st.write("loading...")
         numberDSparticles = (xAxisSize**2) * (DL/100)
         frequencyOfDS = int(100/DL)
         flattenedArray = placeholderArray.flatten()
@@ -66,7 +70,8 @@ def blender2D(blenderSize, fillRatio,thiefSize, distribution, DL=20, particleSiz
         blenderArray = flattenedArray.reshape(xAxisSize, yAxisSize)
 
     if distribution == "poor":
-        st.write("loading...")
+        if verbose == True:
+            st.write("loading...")
         clumpedParticles = numClumps * sizeClumps
         flattenedArray = placeholderArray.flatten()
         if (clumpedParticles) > ((xAxisSize**2) * (DL/100)):
@@ -80,7 +85,8 @@ def blender2D(blenderSize, fillRatio,thiefSize, distribution, DL=20, particleSiz
             flattenedArray[selectedPosition:selectedPosition+sizeClumps] = percentPurityOfDS
             possiblePositions[selectedPosition:selectedPosition+sizeClumps] = "x"
             possiblePositions.remove("x")
-        st.write("clumping complete")
+        if verbose == True:
+            st.write("clumping complete")
         blenderArray = flattenedArray.reshape(xAxisSize, yAxisSize)
         i = (numClumps*sizeClumps)
         while i < numberDSparticles:
@@ -91,7 +97,8 @@ def blender2D(blenderSize, fillRatio,thiefSize, distribution, DL=20, particleSiz
                 i += 1
             else:
                 pass
-        st.write("remaining particles dispersed")
+        if verbose == True:
+            st.write("remaining particles dispersed")
 
     #Sampling loops    
     samplingResults = []
