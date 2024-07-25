@@ -121,7 +121,8 @@ def blender2D(blenderSize, fillRatio,thiefSize, distribution, DL=20, particleSiz
                 j += 1
             j = 0 #after first row, we want to grab all the values    
             i += 1
-        st.write(names[row] + " sampling complete.")
+        if verbose == True:
+            st.write(names[row] + " sampling complete.")
         samplingResults.append(np.mean(sampledValues))
 
     #Visualize
