@@ -10,7 +10,7 @@ if model_type == "single run":
   percentPurtityofDS = st.numberinput("Purity of DS (%)", min_value= 0, max_value = 110)
   DL = st.numberinput("Blend drug load (%)", min_value = 0, max_value = 100)
   blenderSize = st.numberinput("Size of blender (mL)", min_value=5)
-  fillRatio = st.numberinput("Fill volume (%), min_value=10, help="What percentage of the blenders total volume is filled with powder?")
+  fillRatio = st.numberinput("Fill volume (%)", min_value=10, help="What percentage of the blenders total volume is filled with powder?")
   distribution = st.selectbox("Please choose how you wish the powder to be distributed in the blender", ["unmixed", "random", "uniform", "poor"]
   if distribution == "poor":
     numClumps = st.numberinput("Number of DS clumps present", min_value = 1, help ="This will create n number of DS clump in the blender, increasing this value makes the distribution more poor"
