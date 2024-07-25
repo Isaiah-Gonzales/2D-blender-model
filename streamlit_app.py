@@ -12,9 +12,9 @@ if model_type == "single run":
   blenderSize = st.number_input("Size of blender (mL)", min_value=5)
   fillRatio = st.number_input("Fill volume (%)", min_value=10, help="What percentage of the blenders total volume is filled with powder?")
   distribution = st.selectbox("Please choose how you wish the powder to be distributed in the blender", ["unmixed", "random", "uniform", "poor"])
-  st.write("The below inputs only matter if your distribution is **random** ")
-  numClumps = st.number_input("Number of DS clumps present", min_value = 1, help ="This will create n number of DS clump in the blender, increasing this value makes the distribution more poor")
-  sizeClumps = st.number_input("Size of DS clumps", min_value = 2, help="This will control how large the clumps of DS are, increasing this value will make the distribution more poor")
+  if disitribution == "poor":
+    numClumps = st.number_input("Number of DS clumps present", min_value = 1, help ="This will create n number of DS clump in the blender, increasing this value makes the distribution more poor")
+    sizeClumps = st.number_input("Size of DS clumps", min_value = 2, help="This will control how large the clumps of DS are, increasing this value will make the distribution more poor")
 
 if st.button("Run my simulation"):
   if distribution == "poor":
