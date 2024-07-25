@@ -1,3 +1,10 @@
+from matplotlib import pyplot as plt
+from matplotlib import colors
+import time
+import numpy as np
+import random
+import math
+
 #create function to return the distance from 100% assay for a given set of parameters  
 
 def blender2D(blenderSize, fillRatio,thiefSize, distribution, DL=20, particleSize=100, estimatorLoops=500, percentPurityOfDS=100, visualize=False, numClumps=10, sizeClumps=1000):
