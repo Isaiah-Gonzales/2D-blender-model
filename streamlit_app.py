@@ -55,6 +55,7 @@ if st.button("Run my simulation"):
     st.write("**Bottom Position Assay** = " + str(meanAssayofSamples[2]) + "%")
 
   if model_type == "multiple runs":
+    st.write("loading...")
     results = []
     i = 0
     if distribution == "poor":
@@ -82,7 +83,7 @@ if st.button("Run my simulation"):
     figure, ax = plt.subplots(figsize=(10,10))
     viz = ax.boxplot(results)
     plt.title("Spread of mean assays for simulated blender with distribution = " + str(distribution))
-    plt.xlabel("Mean Assay (%)")
+    plt.ylabel("Mean Assay (%)")
     st.pyplot(figure)
     
     st.write("**Min Average Assay Observed** = " + str(round(min(results),2))+ "%")
