@@ -17,7 +17,7 @@ if model_type == "single run":
     sizeClumps = st.number_input("Size of DS clumps", min_value = 2, help="This will control how large the clumps of DS are, increasing this value will make the distribution more poor")
     
 if model_type == "multiple runs":
-  numLoops = st.number_input("How many simulations would you like to perform and average")
+  numLoops = int(st.number_input("How many simulations would you like to perform and average", min_value = 1, max_value = 500))
   thiefSize = st.number_input("Size of sample thief (mL)", min_value = 1, max_value = 100)
   percentPurityOfDS = st.number_input("Purity of DS (%)", min_value= 0, max_value = 110)
   DL = st.number_input("Blend drug load (%)", min_value = 0, max_value = 100)
