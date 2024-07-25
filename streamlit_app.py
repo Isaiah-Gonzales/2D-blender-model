@@ -59,7 +59,7 @@ if st.button("Run my simulation"):
     i = 0
     if distribution == "poor":
       while i < numLoops:
-        results.append(blender2D(thiefSize=thiefSize, 
+        results.append(np.mean(blender2D(thiefSize=thiefSize, 
                   percentPurityOfDS=percentPurityOfDS,
                   DL=DL, 
                   blenderSize=blenderSize, 
@@ -67,17 +67,17 @@ if st.button("Run my simulation"):
                   distribution= distribution,
                   numClumps=numClumps,
                   sizeClumps=sizeClumps,
-                  verbose=False))
+                  verbose=False)))
         i += 1
     else:
       while i < numLoops:
-        results.append(blender2D(thiefSize=thiefSize, 
+        results.append(np.mean(blender2D(thiefSize=thiefSize, 
                   percentPurityOfDS=percentPurityOfDS,
                   DL=DL, 
                   blenderSize=blenderSize, 
                   fillRatio=fillRatio,
                   distribution= distribution,
-                  verbose=False))
+                  verbose=False)))
         i += 1
     st.write("**Min Assay Observed** = " + str(min(results)))
     st.write("**Max Assay Observed** = " +str(max(results)))
