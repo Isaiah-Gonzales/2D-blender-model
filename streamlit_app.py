@@ -7,7 +7,7 @@ model_type = st.selectbox("Would you like to perform a singe run or multiple run
 
 if model_type == "single run":
   thiefSize = st.number_input("Size of sample thief (mL)", min_value = 1, max_value = 100)
-  percentPurtityOfDS = st.number_input("Purity of DS (%)", min_value= 0, max_value = 110)
+  percentPurityOfDS = st.number_input("Purity of DS (%)", min_value= 0, max_value = 110)
   DL = st.number_input("Blend drug load (%)", min_value = 0, max_value = 100)
   blenderSize = st.number_input("Size of blender (mL)", min_value=5)
   fillRatio = st.number_input("Fill volume (%)", min_value=10, help="What percentage of the blenders total volume is filled with powder?")
