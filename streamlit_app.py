@@ -37,6 +37,6 @@ if st.button("Run my simulation"):
               fillRatio=fillRatio,
               distribution= distribution,
               visualize=False)
-  st.write("Top Position Assay = " + str(meanAssayofSamples[0]) + "%")
-  st.write("Middle Position Assay = " + str(meanAssayofSamples[1]) + "%")
-  st.write("Bottom Position Assay = " + str(meanAssayofSamples[2]) + "%")
+  st.write("**Top Position Assay** = " + str(meanAssayofSamples[0]) + "%")
+  st.write("**Middle Position Assay** = " + str(meanAssayofSamples[1]) + "%")
+  st.write("**Bottom Position Assay** = " + str(meanAssayofSamples[2]) + "%")
