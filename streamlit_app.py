@@ -57,7 +57,7 @@ if st.button("Run my simulation"):
   if model_type == "multiple runs":
     results = []
     i = 0
-    if disitribution == "poor":
+    if distribution == "poor":
       while i < numLoops:
         results.append(thiefSize=thiefSize, 
                   percentPurityOfDS=percentPurityOfDS,
