@@ -79,6 +79,6 @@ if st.button("Run my simulation"):
                   distribution= distribution,
                   verbose=False)))
         i += 1
-    st.write("**Min Assay Observed** = " + str(round(min(results),2)+ "%")
-    st.write("**Max Assay Observed** = " + str(round(max(results),2)+ "%")
+    st.write("**Min Assay Observed** = " + str(round(min(results),2)+ "%"))
+    st.write("**Max Assay Observed** = " + str(round(max(results),2)+ "%"))
     
