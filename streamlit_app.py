@@ -79,6 +79,8 @@ if st.button("Run my simulation"):
                   distribution= distribution,
                   verbose=False)))
         i += 1
+    figure = plt.boxplot(results)
+    st.pyplot(figure)
     st.write("**Min Average Assay Observed** = " + str(round(min(results),2))+ "%")
     st.write("**Max Average Assay Observed** = " + str(round(max(results),2))+ "%")
     
