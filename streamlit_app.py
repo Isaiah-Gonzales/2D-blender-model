@@ -81,7 +81,10 @@ if st.button("Run my simulation"):
         i += 1
     figure, ax = plt.subplots(figsize=(10,10))
     viz = ax.boxplot(results)
+    plt.title("Spread of mean assays for simulated blender with distribution = " + str(distribution))
+    plt.xlabel("Mean Assay (%))
     st.pyplot(figure)
+    
     st.write("**Min Average Assay Observed** = " + str(round(min(results),2))+ "%")
     st.write("**Max Average Assay Observed** = " + str(round(max(results),2))+ "%")
     
