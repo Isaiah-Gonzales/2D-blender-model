@@ -10,7 +10,7 @@ if model_type == "single run":
   percentPurityOfDS = st.number_input("Purity of DS (%)", min_value= 0, max_value = 110, value = 100)
   DL = st.number_input("Blend drug load (%)", min_value = 0, max_value = 100, value = 20)
   blenderSize = st.number_input("Size of blender (mL)", min_value=5)
-  fillRatio = (st.number_input("Fill volume (%)", min_value=10,value=10, help="What percentage of the blenders total volume is filled with powder?"))/100 # %
+  fillRatio = st.number_input("Fill volume (%)", min_value=10,value=10, help="What percentage of the blenders total volume is filled with powder?")
   distribution = st.selectbox("Please choose how you wish the powder to be distributed in the blender", ["unmixed", "random", "uniform", "poor"])
   if distribution == "poor":
     numClumps = st.number_input("Number of DS clumps present", min_value = 1,value=100, help ="This will create n number of DS clump in the blender, increasing this value makes the distribution more poor")
@@ -22,7 +22,7 @@ if model_type == "multiple runs":
   percentPurityOfDS = st.number_input("Purity of DS (%)", min_value= 0, max_value = 110, value = 100)  
   DL = st.number_input("Blend drug load (%)", min_value = 0, max_value = 100, value = 20)
   blenderSize = st.number_input("Size of blender (mL)", min_value=5)
-  fillRatio = (st.number_input("Fill volume (%)", min_value=10,value=10, help="What percentage of the blenders total volume is filled with powder?"))/100 # %
+  fillRatio = st.number_input("Fill volume (%)", min_value=10,value=10, help="What percentage of the blenders total volume is filled with powder?")
   distribution = st.selectbox("Please choose how you wish the powder to be distributed in the blender", ["unmixed", "random", "uniform", "poor"])
   if distribution == "poor":
     numClumps = st.number_input("Number of DS clumps present", min_value = 1,value=100, help ="This will create n number of DS clump in the blender, increasing this value makes the distribution more poor")
@@ -36,7 +36,7 @@ if st.button("Run my simulation"):
                 percentPurityOfDS=percentPurityOfDS,
                 DL=DL, 
                 blenderSize=blenderSize, 
-                fillRatio=fillRatio,
+                fillRatio=(fillRatio/100),
                 distribution= distribution,
                 numClumps=numClumps,
                 sizeClumps=sizeClumps,
@@ -64,7 +64,7 @@ if st.button("Run my simulation"):
                   percentPurityOfDS=percentPurityOfDS,
                   DL=DL, 
                   blenderSize=blenderSize, 
-                  fillRatio=fillRatio,
+                  fillRatio=(fillRatio/100),
                   distribution= distribution,
                   numClumps=numClumps,
                   sizeClumps=sizeClumps,
@@ -76,7 +76,7 @@ if st.button("Run my simulation"):
                   percentPurityOfDS=percentPurityOfDS,
                   DL=DL, 
                   blenderSize=blenderSize, 
-                  fillRatio=fillRatio,
+                  fillRatio=(fillRatio/100),
                   distribution= distribution,
                   verbose=False)))
         i += 1
