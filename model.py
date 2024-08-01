@@ -34,7 +34,48 @@ def blender2D(blenderSize, fillRatio,thiefSize, distribution, DL=20, particleSiz
             st.write("loading...")
         placeholderArray[yAxisHalf:,:] = percentPurityOfDS
         blenderArray = placeholderArray.copy()
-
+        
+    if distribution == "poor":
+        st.write("loading...")
+        if clumpiness == 0:
+            disitrbution = "random"
+        else:
+            #calculate number of clumps
+            numberDSparticles = (xAxisSize**2) * (DL/100)
+            clumpedParticles = numberDSparticles * (clumpiness/10)
+            clumpSize = 1000 #um
+            clumpXaxis = clumpSize / 10000 #cm
+            clumpYaxis = clumpSize / 10000 #cm
+            clumpArea = clumpXaxis * clumpYaxis
+            numParticlesPerClump = int(clumpArea/ (particleSizeInCm**2))
+            numClumps = int(clumpedParticles/numParticlesPerClump)
+            st.write("number of clumps: " + str(numClumps))
+            #disperse clumps in blender
+            n = 0
+            numParticlesInClumpAxis = int(clumpSize/particleSize)
+            usableSpace = (yAxisSize-1) - (numParticlesInClumpAxis)
+            while n < numClumps:
+                random_row = random.randint(0, usableSpace)
+                random_value = random.randint(0, usableSpace)
+                section = placeholderArray[random_row:random_row+numParticlesInClumpAxis, random_value:random_value+numParticlesInClumpAxis]
+                if any(percentPurityOfDS in sublist for sublist in section):
+                    pass
+                else:
+                    placeholderArray[random_row:random_row+numParticlesInClumpAxis, random_value:random_value+numParticlesInClumpAxis] = percentPurityOfDS                    
+                    n += 1
+            st.write("Clumping Complete")
+            blenderArray = placeholderArray.copy()
+            i = clumpedParticles
+            while i < numberDSparticles:
+                random_row = random.randint(0, yAxisSize-1) 
+                random_value = random.randint(0, xAxisSize-1)
+                if blenderArray[random_row][random_value] == 0:
+                    blenderArray[random_row][random_value] = percentPurityOfDS
+                    i += 1
+                else:
+                    pass
+            st.write("remaining particles dispersed")
+            
     if distribution == "random":
         if verbose == True:
             st.write("loading...")
@@ -68,37 +109,6 @@ def blender2D(blenderSize, fillRatio,thiefSize, distribution, DL=20, particleSiz
             else:
                 i += 1
         blenderArray = flattenedArray.reshape(xAxisSize, yAxisSize)
-
-    if distribution == "poor":
-        if verbose == True:
-            st.write("loading...")
-        clumpedParticles = numClumps * sizeClumps
-        flattenedArray = placeholderArray.flatten()
-        if (clumpedParticles) > ((xAxisSize**2) * (DL/100)):
-            st.write("Number of clumped particles too great, please reduce number or size of clumps")
-            return
-        numberDSparticles = (xAxisSize**2) * (DL/100)
-        possiblePositions = list(range(0, xAxisSize**2, 1))
-        possiblePositions = possiblePositions[:(len(flattenedArray)-clumpedParticles)]
-        for n in range(numClumps):
-            selectedPosition = random.choice(possiblePositions)
-            flattenedArray[selectedPosition:selectedPosition+sizeClumps] = percentPurityOfDS
-            possiblePositions[selectedPosition:selectedPosition+sizeClumps] = "x"
-            possiblePositions.remove("x")
-        if verbose == True:
-            st.write("clumping complete")
-        blenderArray = flattenedArray.reshape(xAxisSize, yAxisSize)
-        i = (numClumps*sizeClumps)
-        while i < numberDSparticles:
-            random_row = random.randint(0, yAxisSize-1) 
-            random_value = random.randint(0, xAxisSize-1)
-            if blenderArray[random_row][random_value] == 0:
-                blenderArray[random_row][random_value] = percentPurityOfDS
-                i += 1
-            else:
-                pass
-        if verbose == True:
-            st.write("remaining particles dispersed")
 
     #Sampling loops    
     samplingResults = []
