@@ -36,7 +36,8 @@ def blender2D(blenderSize, fillRatio,thiefSize, distribution, DL=20, particleSiz
         blenderArray = placeholderArray.copy()
         
     if distribution == "poor":
-        st.write("loading...")
+        if verbose == True:
+            st.write("loading...")
         if clumpiness == 0:
             disitrbution = "random"
         else:
@@ -49,7 +50,8 @@ def blender2D(blenderSize, fillRatio,thiefSize, distribution, DL=20, particleSiz
             clumpArea = clumpXaxis * clumpYaxis
             numParticlesPerClump = int(clumpArea/ (particleSizeInCm**2))
             numClumps = int(clumpedParticles/numParticlesPerClump)
-            st.write("number of clumps: " + str(numClumps))
+            if verbose == True
+                st.write("number of clumps: " + str(numClumps))
             #disperse clumps in blender
             n = 0
             numParticlesInClumpAxis = int(clumpSize/particleSize)
@@ -63,7 +65,8 @@ def blender2D(blenderSize, fillRatio,thiefSize, distribution, DL=20, particleSiz
                 else:
                     placeholderArray[random_row:random_row+numParticlesInClumpAxis, random_value:random_value+numParticlesInClumpAxis] = percentPurityOfDS                    
                     n += 1
-            st.write("Clumping Complete")
+            if verbose == True:
+                st.write("Clumping Complete")
             blenderArray = placeholderArray.copy()
             i = clumpedParticles
             while i < numberDSparticles:
@@ -74,7 +77,8 @@ def blender2D(blenderSize, fillRatio,thiefSize, distribution, DL=20, particleSiz
                     i += 1
                 else:
                     pass
-            st.write("remaining particles dispersed")
+            if verbose == True:        
+                st.write("remaining particles dispersed")
             
     if distribution == "random":
         if verbose == True:
