@@ -9,8 +9,8 @@ if model_type == "single run":
   thiefSize = st.number_input("Size of sample thief (mL)", min_value = 1, max_value = 100)
   percentPurityOfDS = st.number_input("Purity of DS (%)", min_value= 0, max_value = 110, value = 100)
   DL = st.number_input("Blend drug load (%)", min_value = 0, max_value = 100, value = 20)
-  blenderSize = st.number_input("Size of blender (mL)", min_value=5)
-  fillRatio = st.number_input("Fill volume (%)", min_value=10,value=10, help="What percentage of the blenders total volume is filled with powder?")
+  blenderSize = st.number_input("Size of blender (mL)", min_value=500)
+  fillRatio = st.number_input("Fill volume (%)", min_value=10,value=50, help="What percentage of the blenders total volume is filled with powder?")
   distribution = st.selectbox("Please choose how you wish the powder to be distributed in the blender", ["unmixed", "random", "uniform", "poor"])
   if distribution == "poor":
     percentClumps = st.number_input("What percent of DS particles would you like clumped?", min_value = 1,value=100)
@@ -21,8 +21,8 @@ if model_type == "multiple runs":
   thiefSize = st.number_input("Size of sample thief (mL)", min_value = 1, max_value = 100)
   percentPurityOfDS = st.number_input("Purity of DS (%)", min_value= 0, max_value = 110, value = 100)  
   DL = st.number_input("Blend drug load (%)", min_value = 0, max_value = 100, value = 20)
-  blenderSize = st.number_input("Size of blender (mL)", min_value=5)
-  fillRatio = st.number_input("Fill volume (%)", min_value=10,value=10, help="What percentage of the blenders total volume is filled with powder?")
+  blenderSize = st.number_input("Size of blender (mL)", min_value=500)
+  fillRatio = st.number_input("Fill volume (%)", min_value=10,value=50, help="What percentage of the blenders total volume is filled with powder?")
   distribution = st.selectbox("Please choose how you wish the powder to be distributed in the blender", ["unmixed", "random", "uniform", "poor"])
   if distribution == "poor":
     percentClumps = st.number_input("What percent of DS particles would you like clumped?", min_value = 1,value=100)
