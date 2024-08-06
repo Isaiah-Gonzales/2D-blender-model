@@ -13,8 +13,8 @@ if model_type == "single run":
   fillRatio = st.number_input("Fill volume (%)", min_value=10,value=10, help="What percentage of the blenders total volume is filled with powder?")
   distribution = st.selectbox("Please choose how you wish the powder to be distributed in the blender", ["unmixed", "random", "uniform", "poor"])
   if distribution == "poor":
-    numClumps = st.number_input("Number of DS clumps present", min_value = 1,value=100, help ="This will create n number of DS clump in the blender, increasing this value makes the distribution more poor")
-    sizeClumps = st.number_input("Size of DS clumps", min_value = 2,value=1000, help="This will control how large the clumps of DS are, increasing this value will make the distribution more poor")
+    percentClumps = st.number_input("What percent of DS particles would you like clumped?", min_value = 1,value=100)
+    sizeClumps = st.number_input("Size of DS clumps (microns)", min_value = 2,value=1000)
     
 if model_type == "multiple runs":
   numLoops = int(st.number_input("How many simulations would you like to perform and average", min_value = 1, max_value = 500))
@@ -25,8 +25,8 @@ if model_type == "multiple runs":
   fillRatio = st.number_input("Fill volume (%)", min_value=10,value=10, help="What percentage of the blenders total volume is filled with powder?")
   distribution = st.selectbox("Please choose how you wish the powder to be distributed in the blender", ["unmixed", "random", "uniform", "poor"])
   if distribution == "poor":
-    numClumps = st.number_input("Number of DS clumps present", min_value = 1,value=100, help ="This will create n number of DS clump in the blender, increasing this value makes the distribution more poor")
-    sizeClumps = st.number_input("Size of DS clumps", min_value = 2,value=1000, help="This will control how large the clumps of DS are, increasing this value will make the distribution more poor")
+    percentClumps = st.number_input("What percent of DS particles would you like clumped?", min_value = 1,value=100)
+    sizeClumps = st.number_input("Size of DS clumps (microns)", min_value = 2,value=1000)
     
 if st.button("Run my simulation"):
   if model_type == "single run":
@@ -38,8 +38,8 @@ if st.button("Run my simulation"):
                 blenderSize=blenderSize, 
                 fillRatio=(fillRatio/100),
                 distribution= distribution,
-                numClumps=numClumps,
-                sizeClumps=sizeClumps,
+                clumpiness=percentClumps/10,
+                clumpSize=sizeClumps,
                 visualize=True)
     else:
       meanAssayofSamples = blender2D(
@@ -66,8 +66,8 @@ if st.button("Run my simulation"):
                   blenderSize=blenderSize, 
                   fillRatio=(fillRatio/100),
                   distribution= distribution,
-                  numClumps=numClumps,
-                  sizeClumps=sizeClumps,
+                  clumpiness=numClumps/10,
+                  clumpSize=sizeClumps,
                   verbose=False)))
         i += 1
     else:
