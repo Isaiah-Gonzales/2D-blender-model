@@ -66,7 +66,7 @@ if st.button("Run my simulation"):
                   blenderSize=blenderSize, 
                   fillRatio=(fillRatio/100),
                   distribution= distribution,
-                  clumpiness=numClumps/10,
+                  clumpiness=percentClumps/10,
                   clumpSize=sizeClumps,
                   verbose=False)))
         i += 1
