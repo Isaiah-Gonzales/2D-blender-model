@@ -50,7 +50,7 @@ def blender2D(blenderSize, fillRatio,thiefSize, distribution, DL=20, particleSiz
             clumpArea = clumpXaxis * clumpYaxis
             numParticlesPerClump = int(clumpArea/ (particleSizeInCm**2))
             numClumps = int(clumpedParticles/numParticlesPerClump)
-            if verbose == True
+            if verbose == True:
                 st.write("number of clumps: " + str(numClumps))
             #disperse clumps in blender
             n = 0
