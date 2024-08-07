@@ -82,7 +82,7 @@ if st.sidebar.button("Run my simulation"):
                   blenderSize=blenderSize, 
                   fillRatio=(fillRatio/100),
                   distribution= distribution,
-                  verbose=False)))
+                  verbose=False))
         i += 1
         
     flattenedResults = []
