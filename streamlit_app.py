@@ -88,5 +88,5 @@ if st.button("Run my simulation"):
     
     st.write("**Min Average Assay Observed** = " + str(round(min(results),2))+ "%")
     st.write("**Max Average Assay Observed** = " + str(round(max(results),2))+ "%")
-    st.write("**Std Dev. = " + str(round(np.std(results),2))
+    st.write("**Std Dev. = " + str(round(np.std(results),2)))
     
