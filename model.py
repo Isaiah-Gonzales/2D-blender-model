@@ -136,8 +136,8 @@ def blender2D(blenderSize, fillRatio,thiefSize, distribution, DL=20, particleSiz
             j = 0 #after first row, we want to grab all the values    
             i += 1
         if verbose == True:
-            st.spinner(names[row] + " sampling complete.")
-            time.sleep(2)
+            with st.spinner(names[row] + " sampling complete."):
+                time.sleep(1)
         samplingResults.append(np.mean(sampledValues))
 
     
