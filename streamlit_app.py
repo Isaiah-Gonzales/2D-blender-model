@@ -57,12 +57,13 @@ if st.sidebar.button("Run my simulation"):
 
   if model_type == "multiple runs":
     results = []
+    meanResults = []
     i = 0
     progbar = st.progress(0.0)
     if distribution == "poor":
       while i < numLoops:
         progbar.progress(i/numLoops, text = "running simulations")
-        results.append(np.mean(blender2D(thiefSize=thiefSize, 
+        results.append(blender2D(thiefSize=thiefSize, 
                   percentPurityOfDS=percentPurityOfDS,
                   DL=DL, 
                   blenderSize=blenderSize, 
@@ -70,7 +71,7 @@ if st.sidebar.button("Run my simulation"):
                   distribution= distribution,
                   clumpiness=percentClumps/10,
                   clumpSize=sizeClumps,
-                  verbose=False)))
+                  verbose=False))
         progbar.empty()
         i += 1
     else:
@@ -88,8 +89,12 @@ if st.sidebar.button("Run my simulation"):
     plt.title("Spread of mean assays for simulated blender with distribution = " + str(distribution))
     plt.ylabel("Mean Assay (%)")
     st.pyplot(figure)
-    
-    st.write("**Min Average Assay Observed** = " + str(round(min(results),2))+ "%")
-    st.write("**Max Average Assay Observed** = " + str(round(max(results),2))+ "%")
-    st.write("**Std Dev.** = " + str(round(np.std(results),2)))
-    
+
+    for result in results:
+      meanResults.append(np.mean(result)
+                         
+    st.write("**Min Average Assay Observed** = " + str(round(min(meanResults),2))+ "%")
+    st.write("**Max Average Assay Observed** = " + str(round(max(meanResults),2))+ "%")
+    st.write("**Std Dev.** = " + str(round(np.std(meanResults),2)))
+    st.write("Min Individual Assay Observed = " + str(round(min(results),2)) + "%")
+    st.write("Max Individual Assay Observed = " + str(round(max(results),2)) + "%")
