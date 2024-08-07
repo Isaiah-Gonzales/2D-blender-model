@@ -62,7 +62,7 @@ if st.sidebar.button("Run my simulation"):
     progbar = st.progress(0.0)
     if distribution == "poor":
       while i < numLoops:
-        progbar.progress(i/numLoops, text = "running simulations")
+        progbar.progress(i/numLoops, text = "simulation " + str(i) + " of " + str(numLoops))
         results.append(blender2D(thiefSize=thiefSize, 
                   percentPurityOfDS=percentPurityOfDS,
                   DL=DL, 
@@ -76,6 +76,7 @@ if st.sidebar.button("Run my simulation"):
         i += 1
     else:
       while i < numLoops:
+        progbar.progress(i/numLoops, text = "simulation " + str(i) + " of " + str(numLoops))
         results.append(blender2D(thiefSize=thiefSize, 
                   percentPurityOfDS=percentPurityOfDS,
                   DL=DL, 
