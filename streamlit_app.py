@@ -58,10 +58,10 @@ if st.sidebar.button("Run my simulation"):
   if model_type == "multiple runs":
     results = []
     i = 0
-    progbar = st.progress(0.0, text = "running simulations")
+    progbar = st.progress(0.0)
     if distribution == "poor":
       while i < numLoops:
-        progbar.progress(i/numLoops)
+        progbar.progress(i/numLoops, text = "running simulations")
         results.append(np.mean(blender2D(thiefSize=thiefSize, 
                   percentPurityOfDS=percentPurityOfDS,
                   DL=DL, 
