@@ -56,11 +56,11 @@ if st.sidebar.button("Run my simulation"):
     st.write("**Bottom Position Assay** = " + str(meanAssayofSamples[2]) + "%")
 
   if model_type == "multiple runs":
-    st.write("loading...")
     results = []
     i = 0
     if distribution == "poor":
       while i < numLoops:
+        st.progress(i)
         results.append(np.mean(blender2D(thiefSize=thiefSize, 
                   percentPurityOfDS=percentPurityOfDS,
                   DL=DL, 
