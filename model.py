@@ -32,14 +32,14 @@ def blender2D(blenderSize, fillRatio,thiefSize, distribution, DL=20, particleSiz
     if distribution == "unmixed":
         if verbose == True:
             with st.spinner("loading..."):
-                time.sleep(1)
+                time.sleep(0.5)
         placeholderArray[yAxisHalf:,:] = percentPurityOfDS
         blenderArray = placeholderArray.copy()
         
     if distribution == "poor":
         if verbose == True:
             with st.spinner("loading..."):
-                time.sleep(1)
+                time.sleep(0.5)
         if clumpiness == 0:
             disitrbution = "random"
         else:
@@ -54,7 +54,7 @@ def blender2D(blenderSize, fillRatio,thiefSize, distribution, DL=20, particleSiz
             numClumps = int(clumpedParticles/numParticlesPerClump)
             if verbose == True:
                 with st.spinner("number of clumps: " + str(numClumps)):
-                    time.sleep(1)
+                    time.sleep(0.5)
             #disperse clumps in blender
             n = 0
             numParticlesInClumpAxis = int(clumpSize/particleSize)
@@ -70,7 +70,7 @@ def blender2D(blenderSize, fillRatio,thiefSize, distribution, DL=20, particleSiz
                     n += 1
             if verbose == True:
                 with st.spinner("Clumping Complete"):
-                    time.sleep(1)
+                    time.sleep(0.5)
             blenderArray = placeholderArray.copy()
             i = clumpedParticles
             while i < numberDSparticles:
@@ -83,12 +83,12 @@ def blender2D(blenderSize, fillRatio,thiefSize, distribution, DL=20, particleSiz
                     pass
             if verbose == True:        
                 with st.spinner("remaining particles dispersed"):
-                    time.sleep(1)
+                    time.sleep(0.5)
             
     if distribution == "random":
         if verbose == True:
             with st.spinner("loading..."):
-                time.sleep(1)
+                time.sleep(0.5)
         numberDSparticles = (xAxisSize**2) * (DL/100)
         if DL > 100:
             st.write("DL must be less than 100")
@@ -108,7 +108,7 @@ def blender2D(blenderSize, fillRatio,thiefSize, distribution, DL=20, particleSiz
     if distribution == "uniform":
         if verbose == True:
             with st.spinner("loading..."):
-                time.sleep(1)
+                time.sleep(0.5)
         numberDSparticles = (xAxisSize**2) * (DL/100)
         frequencyOfDS = int(100/DL)
         flattenedArray = placeholderArray.flatten()
@@ -144,7 +144,7 @@ def blender2D(blenderSize, fillRatio,thiefSize, distribution, DL=20, particleSiz
             i += 1
         if verbose == True:
             with st.spinner(names[row] + " sampling complete."):
-                time.sleep(1)
+                time.sleep(0.5)
         samplingResults.append(np.mean(sampledValues))
 
     
