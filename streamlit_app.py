@@ -84,14 +84,19 @@ if st.sidebar.button("Run my simulation"):
                   distribution= distribution,
                   verbose=False)))
         i += 1
+    
+    for result in results:
+      meanResults.append(np.mean(result))
+
+    result = list(np.concatenate(result))
+    
     figure, ax = plt.subplots(figsize=(10,10))
-    viz = ax.boxplot(results)
+    viz = ax.boxplot(meanResults)
     plt.title("Spread of mean assays for simulated blender with distribution = " + str(distribution))
     plt.ylabel("Mean Assay (%)")
     st.pyplot(figure)
 
-    for result in results:
-      meanResults.append(np.mean(result))
+
                          
     st.write("**Min Average Assay Observed** = " + str(round(min(meanResults),2))+ "%")
     st.write("**Max Average Assay Observed** = " + str(round(max(meanResults),2))+ "%")
