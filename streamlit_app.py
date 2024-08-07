@@ -60,7 +60,7 @@ if st.sidebar.button("Run my simulation"):
     i = 0
     if distribution == "poor":
       while i < numLoops:
-        st.progress(i)
+        st.progress(i/numLoops)
         results.append(np.mean(blender2D(thiefSize=thiefSize, 
                   percentPurityOfDS=percentPurityOfDS,
                   DL=DL, 
