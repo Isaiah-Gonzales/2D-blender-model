@@ -84,11 +84,13 @@ if st.sidebar.button("Run my simulation"):
                   distribution= distribution,
                   verbose=False)))
         i += 1
-    
+        
+    flattenedResults = []
     for result in results:
       meanResults.append(np.mean(result))
+      for val in result:
+        flattenedResults.append(val)
 
-    result = list(np.concatenate(result))
     
     figure, ax = plt.subplots(figsize=(10,10))
     viz = ax.boxplot(meanResults)
@@ -101,5 +103,5 @@ if st.sidebar.button("Run my simulation"):
     st.write("**Min Average Assay Observed** = " + str(round(min(meanResults),2))+ "%")
     st.write("**Max Average Assay Observed** = " + str(round(max(meanResults),2))+ "%")
     st.write("**Std Dev.** = " + str(round(np.std(meanResults),2)))
-    st.write("Min Individual Assay Observed = " + str(round(min(results),2)) + "%")
-    st.write("Max Individual Assay Observed = " + str(round(max(results),2)) + "%")
+    st.write("Min Individual Assay Observed = " + str(round(min(flattenedResults),2)) + "%")
+    st.write("Max Individual Assay Observed = " + str(round(max(flattenedResults),2)) + "%")
