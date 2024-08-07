@@ -91,7 +91,7 @@ if st.sidebar.button("Run my simulation"):
     st.pyplot(figure)
 
     for result in results:
-      meanResults.append(np.mean(result)
+      meanResults.append(np.mean(result))
                          
     st.write("**Min Average Assay Observed** = " + str(round(min(meanResults),2))+ "%")
     st.write("**Max Average Assay Observed** = " + str(round(max(meanResults),2))+ "%")
