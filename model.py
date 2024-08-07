@@ -53,7 +53,7 @@ def blender2D(blenderSize, fillRatio,thiefSize, distribution, DL=20, particleSiz
             numParticlesPerClump = int(clumpArea/ (particleSizeInCm**2))
             numClumps = int(clumpedParticles/numParticlesPerClump)
             if verbose == True:
-                placeholder.text("number of clumps: " + str(numClumps))
+                placeholder.spinner("number of clumps: " + str(numClumps))
             #disperse clumps in blender
             n = 0
             numParticlesInClumpAxis = int(clumpSize/particleSize)
@@ -68,7 +68,7 @@ def blender2D(blenderSize, fillRatio,thiefSize, distribution, DL=20, particleSiz
                     placeholderArray[random_row:random_row+numParticlesInClumpAxis, random_value:random_value+numParticlesInClumpAxis] = percentPurityOfDS                    
                     n += 1
             if verbose == True:
-                placeholder.text("Clumping Complete")
+                placeholder.spinner("Clumping Complete")
             blenderArray = placeholderArray.copy()
             i = clumpedParticles
             while i < numberDSparticles:
@@ -80,11 +80,11 @@ def blender2D(blenderSize, fillRatio,thiefSize, distribution, DL=20, particleSiz
                 else:
                     pass
             if verbose == True:        
-                placeholder.text("remaining particles dispersed")
+                placeholder.spinner("remaining particles dispersed")
             
     if distribution == "random":
         if verbose == True:
-            placeholder.text("loading...")
+            placeholder.spinner("loading...")
         numberDSparticles = (xAxisSize**2) * (DL/100)
         if DL > 100:
             st.write("DL must be less than 100")
@@ -103,7 +103,7 @@ def blender2D(blenderSize, fillRatio,thiefSize, distribution, DL=20, particleSiz
 
     if distribution == "uniform":
         if verbose == True:
-            placeholder.text("loading...")
+            placeholder.spinner("loading...")
         numberDSparticles = (xAxisSize**2) * (DL/100)
         frequencyOfDS = int(100/DL)
         flattenedArray = placeholderArray.flatten()
@@ -138,7 +138,7 @@ def blender2D(blenderSize, fillRatio,thiefSize, distribution, DL=20, particleSiz
             j = 0 #after first row, we want to grab all the values    
             i += 1
         if verbose == True:
-            placeholder.text(names[row] + " sampling complete.")
+            placeholder.spinner(names[row] + " sampling complete.")
         samplingResults.append(np.mean(sampledValues))
 
     
