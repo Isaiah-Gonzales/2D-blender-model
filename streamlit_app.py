@@ -3,32 +3,33 @@ import streamlit as st
 st.title("BU Sampler tool")
 st.write("Hi and welcome, this tool creates a model of a blender depending on your inputs. It's recommended to start with a single run to get an understanding of how the program works. If you have any feedback, please reach out to either Isaiah Gonzales or Rajarshi Sengupta.")
 
+st.sidebar.write("Input simulation parameters here")
 model_type = st.sidebar.selectbox("Would you like to perform a singe run or multiple runs?", ["-","single run","multiple runs"], help ="**Single:** This will simulate one blender and sample top, middle, bottom positions, then return assay values for those positions. **Multiple:** This will perform a specified number of simulations and return the distribution of assay values for each position.") 
 
 if model_type == "single run":
-  thiefSize = st.number_input("Size of sample thief (mL)", min_value = 1, max_value = 100)
-  percentPurityOfDS = st.number_input("Purity of DS (%)", min_value= 0, max_value = 110, value = 100)
-  DL = st.number_input("Blend drug load (%)", min_value = 0, max_value = 100, value = 20)
-  blenderSize = st.number_input("Size of blender (mL)", min_value=500)
-  fillRatio = st.number_input("Fill volume (%)", min_value=10,value=50, help="What percentage of the blenders total volume is filled with powder?")
-  distribution = st.selectbox("Please choose how you wish the powder to be distributed in the blender", ["unmixed", "random", "uniform", "poor"])
+  thiefSize = st.sidebar.number_input("Size of sample thief (mL)", min_value = 1, max_value = 100)
+  percentPurityOfDS = st.sidebar.number_input("Purity of DS (%)", min_value= 0, max_value = 110, value = 100)
+  DL = st.sidebar.number_input("Blend drug load (%)", min_value = 0, max_value = 100, value = 20)
+  blenderSize = st.sidebar.number_input("Size of blender (mL)", min_value=500)
+  fillRatio = st.sidebar.number_input("Fill volume (%)", min_value=10,value=50, help="What percentage of the blenders total volume is filled with powder?")
+  distribution = st.sidebar.selectbox("Please choose how you wish the powder to be distributed in the blender", ["unmixed", "random", "uniform", "poor"])
   if distribution == "poor":
-    percentClumps = st.number_input("What percent of DS particles would you like clumped?", min_value = 1,value=100)
-    sizeClumps = st.number_input("Size of DS clumps (microns)", min_value = 2,value=1000)
+    percentClumps = st.sidebar.number_input("What percent of DS particles would you like clumped?", min_value = 1,value=100)
+    sizeClumps = st.sidebar.number_input("Size of DS clumps (microns)", min_value = 2,value=1000)
   
 if model_type == "multiple runs":
-  numLoops = int(st.number_input("How many simulations would you like to perform and average", min_value = 1, max_value = 500))
-  thiefSize = st.number_input("Size of sample thief (mL)", min_value = 1, max_value = 100)
-  percentPurityOfDS = st.number_input("Purity of DS (%)", min_value= 0, max_value = 110, value = 100)  
-  DL = st.number_input("Blend drug load (%)", min_value = 0, max_value = 100, value = 20)
-  blenderSize = st.number_input("Size of blender (mL)", min_value=500)
-  fillRatio = st.number_input("Fill volume (%)", min_value=10,value=50, help="What percentage of the blenders total volume is filled with powder?")
-  distribution = st.selectbox("Please choose how you wish the powder to be distributed in the blender", ["unmixed", "random", "uniform", "poor"])
+  numLoops = int(st.sidebar.number_input("How many simulations would you like to perform and average", min_value = 1, max_value = 500))
+  thiefSize = st.sidebar.number_input("Size of sample thief (mL)", min_value = 1, max_value = 100)
+  percentPurityOfDS = st.sidebar.number_input("Purity of DS (%)", min_value= 0, max_value = 110, value = 100)  
+  DL = st.sidebar.number_input("Blend drug load (%)", min_value = 0, max_value = 100, value = 20)
+  blenderSize = st.sidebar.number_input("Size of blender (mL)", min_value=500)
+  fillRatio = st.sidebar.number_input("Fill volume (%)", min_value=10,value=50, help="What percentage of the blenders total volume is filled with powder?")
+  distribution = st.sidebar.selectbox("Please choose how you wish the powder to be distributed in the blender", ["unmixed", "random", "uniform", "poor"])
   if distribution == "poor":
-    percentClumps = st.number_input("What percent of DS particles would you like clumped?", min_value = 1,value=100)
-    sizeClumps = st.number_input("Size of DS clumps (microns)", min_value = 2,value=1000)
+    percentClumps = st.sidebar.number_input("What percent of DS particles would you like clumped?", min_value = 1,value=100)
+    sizeClumps = st.sidebar.number_input("Size of DS clumps (microns)", min_value = 2,value=1000)
   
-if st.button("Run my simulation"):
+if st.sidebar.button("Run my simulation"):
   if model_type == "single run":
     if distribution == "poor":
       meanAssayofSamples = blender2D(
