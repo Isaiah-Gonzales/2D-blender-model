@@ -138,7 +138,7 @@ def blender2D(blenderSize, fillRatio,thiefSize, distribution, DL=20, particleSiz
             j = 0 #after first row, we want to grab all the values    
             i += 1
         if verbose == True:
-            placeholder.text(names[row] + " sampling complete.")
+            placeholder.write(names[row] + " sampling complete.")
         samplingResults.append(np.mean(sampledValues))
 
     placeholder.empty()
