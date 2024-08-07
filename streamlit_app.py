@@ -76,7 +76,7 @@ if st.sidebar.button("Run my simulation"):
         i += 1
     else:
       while i < numLoops:
-        results.append(np.mean(blender2D(thiefSize=thiefSize, 
+        results.append(blender2D(thiefSize=thiefSize, 
                   percentPurityOfDS=percentPurityOfDS,
                   DL=DL, 
                   blenderSize=blenderSize, 
