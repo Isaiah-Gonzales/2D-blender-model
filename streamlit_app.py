@@ -72,8 +72,8 @@ if st.sidebar.button("Run my simulation"):
                   clumpiness=percentClumps/10,
                   clumpSize=sizeClumps,
                   verbose=False))
-        progbar.empty()
         i += 1
+      progbar.empty()
     else:
       while i < numLoops:
         progbar.progress(i/numLoops, text = "simulation " + str(i) + " of " + str(numLoops))
@@ -85,6 +85,7 @@ if st.sidebar.button("Run my simulation"):
                   distribution= distribution,
                   verbose=False))
         i += 1
+      progbar.empty()
         
     flattenedResults = []
     for result in results:
