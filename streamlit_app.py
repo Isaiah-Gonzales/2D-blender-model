@@ -100,8 +100,8 @@ if st.sidebar.button("Run my simulation"):
 
 
                          
-    st.help(st.write("**Min Average Assay Observed** = " + str(round(min(meanResults),2))+ "%"), "The **minimum** mean value of top, middle, and bottom sample positions for an individual simulation")
-    st.help(st.write("**Max Average Assay Observed** = " + str(round(max(meanResults),2))+ "%"), "The **maximum** mean value of top, middle, and bottom sample positions for an individual simulation")
-    st.help(st.write("**Std Dev.** = " + str(round(np.std(meanResults),2))), "The standard deviation of mean assay values for all simulations")
-    st.help(st.write("Min Individual Assay Observed = " + str(round(min(flattenedResults),2)) + "%"), "The minimum individual assay for either a top, middle, or bottom sample position")
-    st.help(st.write("Max Individual Assay Observed = " + str(round(max(flattenedResults),2)) + "%"), "The maximum individual assay for either a top, middle, or bottom sample position")
+    st.write("**Min Average Assay Observed** = " + str(round(min(meanResults),2))+ "%")
+    st.write("**Max Average Assay Observed** = " + str(round(max(meanResults),2))+ "%")
+    st.write("**Std Dev.** = " + str(round(np.std(meanResults),2)))
+    st.write("Min Individual Assay Observed = " + str(round(min(flattenedResults),2)) + "%")
+    st.write("Max Individual Assay Observed = " + str(round(max(flattenedResults),2)) + "%")
