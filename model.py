@@ -137,6 +137,7 @@ def blender2D(blenderSize, fillRatio,thiefSize, distribution, DL=20, particleSiz
             i += 1
         if verbose == True:
             st.spinner(names[row] + " sampling complete.")
+            time.sleep(2)
         samplingResults.append(np.mean(sampledValues))
 
     
