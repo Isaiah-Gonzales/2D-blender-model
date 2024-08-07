@@ -88,7 +88,7 @@ if st.sidebar.button("Run my simulation"):
     flattenedResults = []
     for result in results:
       meanResults.append(np.mean(result))
-      for val in results:
+      for val in result:
         flattenedResults.append(val)
 
     
