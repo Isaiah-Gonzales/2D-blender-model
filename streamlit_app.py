@@ -88,7 +88,8 @@ if st.sidebar.button("Run my simulation"):
     flattenedResults = []
     for result in results:
       meanResults.append(np.mean(result))
-      st.write(str(result))
+      for val in results:
+        flattenedResults.append(val)
 
     
     figure, ax = plt.subplots(figsize=(10,10))
