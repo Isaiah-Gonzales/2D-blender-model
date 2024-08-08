@@ -1,4 +1,4 @@
-from model import *
+pfrom model import *
 import streamlit as st
 st.title("BU Sampler tool")
 st.write("Hi and welcome, this tool creates a model of a blender depending on your inputs. It's recommended to start with a single run to get an understanding of how the program works. If you have any feedback, please reach out to either **Isaiah Gonzales** or **Rajarshi Sengupta**.")
@@ -9,11 +9,9 @@ model_type = st.sidebar.selectbox("Would you like to perform a singe run or mult
 if model_type != "-":
   thiefSize = st.sidebar.number_input("Size of sample thief (mL)", min_value = 1, max_value = 100)
   percentPurityOfDS = st.sidebar.number_input("Purity of DS (%)", min_value= 0, max_value = 110, value = 100)
-  expander = st.expander("Blender Options")
-  with expander:
-    DL = st.sidebar.number_input("Blend drug load (%)", min_value = 0, max_value = 100, value = 20)
-    blenderSize = st.sidebar.number_input("Size of blender (mL)", min_value=500)
-    fillRatio = st.sidebar.number_input("Fill volume (%)", min_value=10,value=50, help="What percentage of the blenders total volume is filled with powder?")
+  DL = st.sidebar.number_input("Blend drug load (%)", min_value = 0, max_value = 100, value = 20)
+  blenderSize = st.sidebar.number_input("Size of blender (mL)", min_value=500)
+  fillRatio = st.sidebar.number_input("Fill volume (%)", min_value=10,value=50, help="What percentage of the blenders total volume is filled with powder?")
   distribution = st.sidebar.selectbox("Please choose how you wish the powder to be distributed in the blender", ["unmixed", "random", "uniform", "poor"])
   if distribution == "poor":
     percentClumps = st.sidebar.number_input("What percent of DS particles would you like clumped?", min_value = 1,value=50)
