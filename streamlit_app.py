@@ -6,7 +6,7 @@ st.write("Hi and welcome, this tool creates a model of a blender depending on yo
 st.sidebar.write("**Input simulation parameters here**")
 model_type = st.sidebar.selectbox("Would you like to perform a singe run or multiple runs?", ["-","single run","multiple runs"], help ="**Single:** This will simulate one blender and sample top, middle, bottom positions, then return assay values for those positions. **Multiple:** This will perform a specified number of simulations and return the distribution of assay values for each position.") 
 
-if model_type == "single run":
+if model_type != "-":
   thiefSize = st.sidebar.number_input("Size of sample thief (mL)", min_value = 1, max_value = 100)
   percentPurityOfDS = st.sidebar.number_input("Purity of DS (%)", min_value= 0, max_value = 110, value = 100)
   DL = st.sidebar.number_input("Blend drug load (%)", min_value = 0, max_value = 100, value = 20)
@@ -19,15 +19,6 @@ if model_type == "single run":
   
 if model_type == "multiple runs":
   numLoops = int(st.sidebar.number_input("How many simulations would you like to perform and average", min_value = 1, max_value = 500))
-  thiefSize = st.sidebar.number_input("Size of sample thief (mL)", min_value = 1, max_value = 100)
-  percentPurityOfDS = st.sidebar.number_input("Purity of DS (%)", min_value= 0, max_value = 110, value = 100)  
-  DL = st.sidebar.number_input("Blend drug load (%)", min_value = 0, max_value = 100, value = 20)
-  blenderSize = st.sidebar.number_input("Size of blender (mL)", min_value=500)
-  fillRatio = st.sidebar.number_input("Fill volume (%)", min_value=10,value=50, help="What percentage of the blenders total volume is filled with powder?")
-  distribution = st.sidebar.selectbox("Please choose how you wish the powder to be distributed in the blender", ["unmixed", "random", "uniform", "poor"])
-  if distribution == "poor":
-    percentClumps = st.sidebar.number_input("What percent of DS particles would you like clumped?", min_value = 1,value=50)
-    sizeClumps = st.sidebar.number_input("Size of DS clumps (microns)", min_value = 2,value=1000)
   
 if st.sidebar.button("Run my simulation"):
   if model_type == "single run":
