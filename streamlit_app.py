@@ -14,7 +14,7 @@ if model_type == "single run":
   fillRatio = st.sidebar.number_input("Fill volume (%)", min_value=10,value=50, help="What percentage of the blenders total volume is filled with powder?")
   distribution = st.sidebar.selectbox("Please choose how you wish the powder to be distributed in the blender", ["unmixed", "random", "uniform", "poor"])
   if distribution == "poor":
-    percentClumps = st.sidebar.number_input("What percent of DS particles would you like clumped?", min_value = 1,value=100)
+    percentClumps = st.sidebar.number_input("What percent of DS particles would you like clumped?", min_value = 1,value=50)
     sizeClumps = st.sidebar.number_input("Size of DS clumps (microns)", min_value = 2,value=1000)
   
 if model_type == "multiple runs":
@@ -26,7 +26,7 @@ if model_type == "multiple runs":
   fillRatio = st.sidebar.number_input("Fill volume (%)", min_value=10,value=50, help="What percentage of the blenders total volume is filled with powder?")
   distribution = st.sidebar.selectbox("Please choose how you wish the powder to be distributed in the blender", ["unmixed", "random", "uniform", "poor"])
   if distribution == "poor":
-    percentClumps = st.sidebar.number_input("What percent of DS particles would you like clumped?", min_value = 1,value=100)
+    percentClumps = st.sidebar.number_input("What percent of DS particles would you like clumped?", min_value = 1,value=50)
     sizeClumps = st.sidebar.number_input("Size of DS clumps (microns)", min_value = 2,value=1000)
   
 if st.sidebar.button("Run my simulation"):
