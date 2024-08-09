@@ -118,3 +118,6 @@ with tab2:
   st.image("exampleBU.png", caption="Case study: effect of increasing number of sample on BU results")
   st.write("What do we see? *The more samples we extract, the lower the standard deviation in results*")
   st.write("But why is this? To understand our results, we can utilize the  **single run** model.")
+  st.image("exampleBUblenders.png")
+  st.write("As you can see, as we increase the number of sample locations, we are increasing the proportion of the blender sampled.")
+  st.write("If we took this to the extreme, say 100 samples, you'd almost sample the entire blender, so your std. dev. would be very low")
