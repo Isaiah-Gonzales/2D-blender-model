@@ -10,16 +10,17 @@ import math
 #create function to return the distance from 100% assay for a given set of parameters  
 
 def blender2D(blenderSize, fillRatio,thiefSize, distribution, DL=20, particleSize=100, percentPurityOfDS=100, visualize=False, clumpiness = 0, clumpSize = 1000, verbose = True, numSamples = 3):
-    amountOfPowder = blenderSize * fillRatio*(10**12) #um3
-    volumeOfOneParticle = particleSize
+    amountOfPowder = blenderSize * fillRatio #mL or cm3
+    particleSizeInCm = particleSize / 10000 #cm
+    areaOfOneParticle = particleSizeInCm**2 
 
     #number of particles that could fit in blender, assuming they are packed in a square
-    xAxisSize = math.ceil(math.sqrt(amountOfPowder/volumeOfOneParticle))
-    yAxisSize = math.ceil(math.sqrt(amountOfPowder/volumeOfOneParticle))
+    xAxisSize = math.ceil(math.sqrt(amountOfPowder/areaOfOneParticle))
+    yAxisSize = math.ceil(math.sqrt(amountOfPowder/areaOfOneParticle))
 
     #we'll assume that sample thief is square, this will tell us how many particles to average per sample
-    xAxisSizeThief = math.ceil(math.sqrt((thiefSize*(10**12))/volumeOfOneParticle))
-    yAxisSizeThief = math.ceil(math.sqrt((thiefSize*(10**12))/volumeOfOneParticle))
+    xAxisSizeThief = math.ceil(math.sqrt(thiefSize/areaOfOneParticle))
+    yAxisSizeThief = math.ceil(math.sqrt(thiefSize/areaOfOneParticle))
 
     placeholderArray = np.zeros((xAxisSize, yAxisSize)) # Create a 2D array of all 0's
     yAxisHalf = int(yAxisSize/2)
@@ -47,10 +48,10 @@ def blender2D(blenderSize, fillRatio,thiefSize, distribution, DL=20, particleSiz
             numberDSparticles = (xAxisSize**2) * (DL/100)
             clumpedParticles = numberDSparticles * (clumpiness/10)
             clumpSize = 1000 #um
-            clumpXaxis = clumpSize #um
-            clumpYaxis = clumpSize #um
+            clumpXaxis = clumpSize / 10000 #cm
+            clumpYaxis = clumpSize / 10000 #cm
             clumpArea = clumpXaxis * clumpYaxis
-            numParticlesPerClump = int(clumpArea/particleSize)
+            numParticlesPerClump = int(clumpArea/ (particleSizeInCm**2))
             numClumps = int(clumpedParticles/numParticlesPerClump)
             if verbose == True:
                 with st.spinner("number of clumps: " + str(numClumps)):
