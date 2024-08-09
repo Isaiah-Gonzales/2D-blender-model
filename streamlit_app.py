@@ -1,7 +1,7 @@
 from model import *
 import streamlit as st
 
-tab1, tab2 = st.tabs["model", "example"]
+tab1, tab2 = st.tabs(["model", "example"])
 
 with tab1:
   st.title("BU Sampler tool")
