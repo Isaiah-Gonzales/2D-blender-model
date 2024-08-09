@@ -8,7 +8,7 @@ model_type = st.sidebar.selectbox("Would you like to perform a singe run or mult
 
 if model_type != "-":
   thiefSize = st.sidebar.number_input("Size of sample thief (mL)", min_value = 1, max_value = 100)
-  numSamples = st.sidebar.slider("Number of samples to extract", min_value = 1, max_value = 100, step =1)
+  numSamples = st.sidebar.slider("Number of samples to extract", min_value = 1, max_value = 10, step =1)
   percentPurityOfDS = st.sidebar.number_input("Purity of DS (%)", min_value= 0, max_value = 110, value = 100)
   DL = st.sidebar.number_input("Blend drug load (%)", min_value = 0, max_value = 100, value = 20)
   blenderSize = st.sidebar.number_input("Size of blender (mL)", min_value=500)
