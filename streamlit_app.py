@@ -43,7 +43,7 @@ if st.sidebar.button("Run my simulation"):
                 distribution= distribution,
                 visualize=True)
     i=1
-    for assay in meanAssayoSamples:
+    for assay in meanAssayofSamples:
       st.write("Sample " + str(i) + "= " + str(assay) + "%")
 
   if model_type == "multiple runs":
