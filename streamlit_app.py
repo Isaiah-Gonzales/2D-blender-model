@@ -19,8 +19,8 @@ if model_type != "-":
 
   if distribution == "poor":
     with advanced_options:
-      percentClumps = st.sidebar.slider("What percent of DS particles would you like clumped?", min_value = 1,value=50, step =10)
-      sizeClumps = st.sidebar.number_input("Size of DS clumps (microns)", min_value = 100,value=1000, max_value =10000)
+      percentClumps = st.slider("What percent of DS particles would you like clumped?", min_value = 1,value=50, step =10)
+      sizeClumps = st.number_input("Size of DS clumps (microns)", min_value = 100,value=1000, max_value =10000)
   
 if model_type == "multiple runs":
   numLoops = int(st.sidebar.number_input("How many simulations would you like to perform and average", min_value = 1, max_value = 500))
