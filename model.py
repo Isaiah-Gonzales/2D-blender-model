@@ -8,7 +8,7 @@ import math
 
 #create function to return the distance from 100% assay for a given set of parameters  
 
-def blender2D(blenderSize, fillRatio,thiefSize, distribution, DL=20, particleSize=100, estimatorLoops=500, percentPurityOfDS=100, visualize=False, clumpiness = 0, clumpSize = 1000, verbose = True):
+def blender2D(blenderSize, fillRatio,thiefSize, distribution, DL=20, particleSize=100, percentPurityOfDS=100, visualize=False, clumpiness = 0, clumpSize = 1000, verbose = True, numSamples = 3):
     amountOfPowder = blenderSize * fillRatio #mL or cm3
     particleSizeInCm = particleSize / 10000 #cm
     areaOfOneParticle = particleSizeInCm**2 
@@ -122,37 +122,36 @@ def blender2D(blenderSize, fillRatio,thiefSize, distribution, DL=20, particleSiz
         blenderArray = flattenedArray.reshape(xAxisSize, yAxisSize)
 
     #Sampling loops    
+    samplingArray = np.zeros((xAxisSize, yAxisSize))
+    toSample = {}
     samplingResults = []
-    names = {1:"top", int(yAxisHalf-(yAxisSizeThief/2)):"middle", int(yAxisSize-yAxisSizeThief):"bottom"}
-    rowsToSample = [1, int(yAxisHalf-(yAxisSizeThief/2)), yAxisSize-yAxisSizeThief]
-    for row in rowsToSample:
-        sampledValues = []
-        startingRow = row
-        #return the index of the random value
-        startingCol = 10
-
-        #average the value of the particles in the sample thief
-        i = 0 #row iterator, still want to start at the same row
-        j = 1 #col iterator, but want to start at the next col
-        while i < xAxisSizeThief:
-            while j < yAxisSizeThief:
-                currentRow = startingRow + i
-                currentColumn = startingCol + j
-                sampledValues.append(blenderArray[currentRow][currentColumn])
-                j += 1
-            j = 0 #after first row, we want to grab all the values    
-            i += 1
-        if verbose == True:
-            with st.spinner(names[row] + " sampling complete."):
-                time.sleep(1)
-        samplingResults.append(np.mean(sampledValues))
-
-    
+    samplableSpace = (yAxisSize-1) - (xAxisSizeThief)
+    currentSample = 1
+    sampleProg = st.progress()
+    while currentSample <= numSamples:
+        random_row = random.randint(0, samplableSpace)
+        random_value = random.randint(0, samplableSpace)
+        section = samplingArray[random_row:random_row+yAxisSizeThief, random_value:random_value+xAxisSizeThief]
+        if any(1 in sublist for sublist in section):
+            pass
+        else:
+            sampleProg.progress(currentSample/numSamples, text = "sample " + str(currentSample) + " of " + str(numSamples))
+            samplingArray[random_row:random_row+yAxisSizeThief, random_value:random_value+xAxisSizeThief] = 1  
+            print("Sample " + str(currentSample) + " complete") 
+            toSample[random_row] = random_value                 
+            currentSample += 1
+    sampleProg.empty()
+    for row,value in toSample.items():
+        samplingResults.append(np.mean(blenderArray[row:row+yAxisSizeThief,value:value+xAxisSizeThief]))
     
     #Visualize
     if visualize == True:
         figure, ax = plt.subplots(figsize=(10,10))
-        viz = ax.imshow(blenderArray, interpolation='nearest', cmap='binary') #draw 2D array
+        for row,value in toSample.items():
+            blenderArray[row:row+yAxisSizeThief,value:value+xAxisSizeThief] = np.nan
+        cmap = matplotlib.cm.binary.copy()
+        cmap.set_bad(color='cornflowerblue')
+        viz = ax.imshow(blenderArray, interpolation='none', cmap=cmap) #draw 2D array
         colorbar = figure.colorbar(viz)
         plt.title("Simulated blender, distribution = " + str(distribution))    
         st.pyplot(figure)
