@@ -1,6 +1,7 @@
 import streamlit as st
 from matplotlib import pyplot as plt
 from matplotlib import colors
+import matplotlib
 import time
 import numpy as np
 import random
