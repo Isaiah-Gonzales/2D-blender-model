@@ -42,9 +42,9 @@ if st.sidebar.button("Run my simulation"):
                 fillRatio=(fillRatio/100),
                 distribution= distribution,
                 visualize=True)
-    st.write("**Top Position Assay** = " + str(meanAssayofSamples[0]) + "%")
-    st.write("**Middle Position Assay** = " + str(meanAssayofSamples[1]) + "%")
-    st.write("**Bottom Position Assay** = " + str(meanAssayofSamples[2]) + "%")
+    i=1
+    for assay in meanAssayoSamples:
+      st.write("Sample " + str(i) + "= " + str(assay) + "%")
 
   if model_type == "multiple runs":
     results = []
