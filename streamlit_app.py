@@ -128,4 +128,4 @@ with tab3:
   explainer1 = st.expander("1. Flattening the blender into a 2D grid")
   with explainer1:
     st.write("To demonstrate what's happening, let's look at a very simple case, let's say you have 1mL (or cm3) of powder")
-    st.write("You could display that 1 mL of powder as follows"
+    st.write("You could display that 1 mL of powder as follows")
