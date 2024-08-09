@@ -9,7 +9,7 @@ with tab1:
   st.write("If you have any feedback, please reach out to either **Isaiah Gonzales** or **Rajarshi Sengupta**.")
            
   st.sidebar.write("**Input simulation parameters here**")
-  model_type = st.sidebar.selectbox("Would you like to simulate one blender (single run), or multiple blenders (multiple runs)", ["-","single run","multiple runs"], help ="**Single:** This will simulate one blender, and return *individual* assays of BU samples extracted. **Multiple:** This will simulate multiple blenders, and return *mean* assays, this can be useful to understand probabilities. ") 
+  model_type = st.sidebar.selectbox("Would you like to simulate one blender or multiple blenders", ["-","single run","multiple runs"], help ="**Single:** This will simulate one blender, and return *individual* assays of BU samples extracted. **Multiple:** This will simulate multiple blenders, and return *mean* assays, this can be useful to understand probabilities. ") 
   
   if model_type != "-":
     distribution = st.sidebar.selectbox("Please choose how you wish the powder to be distributed in the blender", ["unmixed", "random", "uniform", "poor"])
