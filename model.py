@@ -154,7 +154,7 @@ def blender2D(blenderSize, fillRatio,thiefSize, distribution, DL=20, particleSiz
         cmap.set_bad(color='cornflowerblue')
         viz = ax.imshow(blenderArray, interpolation='none', cmap=cmap) #draw 2D array
         colorbar = figure.colorbar(viz)
-        plt.title("Simulated blender, distribution = " + str(distribution))    
+        plt.title("Simulated blender, distribution = " + str(distribution) + ", sampled locations shown in blue")    
         st.pyplot(figure)
     
     #Final Results
