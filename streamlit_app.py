@@ -1,7 +1,7 @@
 from model import *
 import streamlit as st
 
-tab1, tab2 = st.tabs(["model", "example"])
+tab1, tab2, tab3 = st.tabs(["model", "example", "how it works"])
 
 with tab1:
   st.title("BU Statistical Model")
@@ -113,6 +113,7 @@ with tab1:
       st.write("**Std Dev.** = " + str(round(np.std(meanResults),2)))
       st.write("Min Individual Assay Observed = " + str(round(min(flattenedResults),2)) + "%")
       st.write("Max Individual Assay Observed = " + str(round(max(flattenedResults),2)) + "%")
+      
 with tab2:
   st.write("Let's examine what happens to our BU results when we increase the number of samples we extract from the blender.")
   st.write("To examine this, we will be using the **multiple run** model, for a **poor** distribution, we will change the **number of samples**, from 3 to 10.")
@@ -122,3 +123,9 @@ with tab2:
   st.image("exampleBUblenders.png")
   st.write("As you can see, as we increase the number of sample locations, we are increasing the proportion of the blender sampled.")
   st.write("If we took this to the extreme, say 100 samples, you'd almost sample the entire blender, so your std. dev. would be very low.")
+
+with tab3:
+  explainer1 = st.expander("1. Flattening the blender into a 2D grid")
+  with explainer1:
+    st.write("To demonstrate what's happening, let's look at a very simple case, let's say you have 1mL (or cm3) of powder")
+    st.write("You could display that 1 mL of powder as follows"
