@@ -45,6 +45,7 @@ if st.sidebar.button("Run my simulation"):
     i=1
     for assay in meanAssayofSamples:
       st.write("Sample " + str(i) + "= " + str(assay) + "%")
+      i += 1
 
   if model_type == "multiple runs":
     results = []
