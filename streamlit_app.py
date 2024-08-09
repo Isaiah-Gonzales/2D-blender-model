@@ -125,7 +125,7 @@ with tab2:
   st.write("If we took this to the extreme, say 100 samples, you'd almost sample the entire blender, so your std. dev. would be very low.")
 
 with tab3:
-  explainer1 = st.expander("1. Flattening the blender into a 2D grid")
+  explainer1 = st.expander("1) Flattening the blender into a 2D grid")
   with explainer1:
     st.write("To demonstrate what's happening, let's look at a very simple case, let's say you have 1mL (or cm3) of powder")
     st.write("You could display that 1 mL of powder as follows")
