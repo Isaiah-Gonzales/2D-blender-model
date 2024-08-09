@@ -5,7 +5,7 @@ tab1, tab2 = st.tabs(["model", "example"])
 
 with tab1:
   st.title("BU Sampler tool")
-  st.write("Hi and welcome, this tool creates a model of a blender depending on your inputs. It's recommended to look at the 'example' tab if this is your first time.")
+  st.write("Hi and welcome, this tool creates a model of a blender depending on your inputs. It's recommended to look at the :blue-background[example] tab if this is your first time.")
   st.write("If you have any feedback, please reach out to either **Isaiah Gonzales** or **Rajarshi Sengupta**.")
            
   st.sidebar.write("**Input simulation parameters here**")
