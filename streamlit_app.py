@@ -10,11 +10,11 @@ if model_type != "-":
   distribution = st.sidebar.selectbox("Please choose how you wish the powder to be distributed in the blender", ["unmixed", "random", "uniform", "poor"])
   blenderSize = st.sidebar.number_input("Size of blender (mL)", min_value=500)
   with st.sidebar.expander("Advanced Options"):
-    thiefSize = st.sidebar.slider("Size of sample thief (mL)", min_value = 1, max_value = 10, step =1)
-    numSamples = st.sidebar.slider("Number of samples to extract", min_value = 1, max_value = 10, step =1)
-    percentPurityOfDS = st.sidebar.slider("Purity of DS (%)", min_value= 0, max_value = 110, value = 100, step=10)
-    DL = st.sidebar.slider("Blend drug load (%)", min_value = 0, max_value = 100, value = 20, step=10)
-    fillRatio = st.sidebar.slider("Fill volume (%)", min_value=10, max_value=100, step= 10, value=50, help="What percentage of the blenders total volume is filled with powder?")
+    thiefSize = st.slider("Size of sample thief (mL)", min_value = 1, max_value = 10, step =1)
+    numSamples = st.slider("Number of samples to extract", min_value = 1, max_value = 10, step =1)
+    percentPurityOfDS = st.slider("Purity of DS (%)", min_value= 0, max_value = 110, value = 100, step=10)
+    DL = st.slider("Blend drug load (%)", min_value = 0, max_value = 100, value = 20, step=10)
+    fillRatio = st.slider("Fill volume (%)", min_value=10, max_value=100, step= 10, value=50, help="What percentage of the blenders total volume is filled with powder?")
 
   if distribution == "poor":
     percentClumps = st.sidebar.slider("What percent of DS particles would you like clumped?", min_value = 1,value=50, step =10)
