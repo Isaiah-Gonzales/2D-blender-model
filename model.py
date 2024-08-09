@@ -25,8 +25,8 @@ def blender2D(blenderSize, fillRatio,thiefSize, distribution, DL=20, particleSiz
     placeholderArray = np.zeros((xAxisSize, yAxisSize)) # Create a 2D array of all 0's
     yAxisHalf = int(yAxisSize/2)
 
-    if (xAxisSize**2) < ((xAxisSizeThief**2)*3):
-        st.write("Thief size too large in comparison to blender size")
+    if (xAxisSize**2) < ((xAxisSizeThief**2)*numSamples):
+        st.write("Thief size too large in comparison to blender size or number of samples too high")
         return
 
     #Define distributions
