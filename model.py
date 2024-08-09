@@ -155,8 +155,8 @@ def blender2D(blenderSize, fillRatio,thiefSize, distribution, DL=20, particleSiz
         viz = ax.imshow(blenderArray, interpolation='none', cmap=cmap) #draw 2D array
         colorbar = figure.colorbar(viz)
         plt.title("Simulated blender, distribution = " + str(distribution) + ", sampled locations shown in blue") 
-        plt.xlabel("Particles size " + str(particleSize))
-        plt.ylabel("Particles size " + str(particleSize))
+        plt.xlabel("Particles size " + str(particleSize) +"μm")
+        plt.ylabel("Particles size " + str(particleSize) +"μm")
         st.pyplot(figure)
     
     #Final Results
