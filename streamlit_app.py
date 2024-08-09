@@ -13,7 +13,7 @@ with tab1:
   
   if model_type != "-":
     distribution = st.sidebar.selectbox("Please choose how you wish the powder to be distributed in the blender", ["unmixed", "random", "uniform", "poor"])
-    blenderSize = st.sidebar.number_input("Size of blender (mL)", min_value=500)
+    blenderSize = st.sidebar.number_input("Size of blender (mL)", min_value=50, max_value=5000)
     advanced_options = st.sidebar.expander("Advanced Options")
     with advanced_options:
       thiefSize = st.slider("Size of sample thief (mL)", min_value = 1, max_value = 10, step =1)
