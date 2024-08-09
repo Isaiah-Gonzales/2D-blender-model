@@ -41,6 +41,7 @@ with tab1:
                   distribution= distribution,
                   clumpiness=percentClumps/10,
                   clumpSize=sizeClumps,
+                  numSamples=numSamples,
                   visualize=True)
       else:
         meanAssayofSamples = blender2D(
@@ -50,6 +51,7 @@ with tab1:
                   blenderSize=blenderSize, 
                   fillRatio=(fillRatio/100),
                   distribution= distribution,
+                  numSamples=numSamples,
                   visualize=True)
       i=1
       for assay in meanAssayofSamples:
