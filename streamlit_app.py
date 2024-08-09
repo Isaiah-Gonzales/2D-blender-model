@@ -114,5 +114,5 @@ with tab1:
       st.write("Max Individual Assay Observed = " + str(round(max(flattenedResults),2)) + "%")
 with tab2:
   st.write("Let's examine what happens to our BU results when we increase the number of samples we extract from the blender")
-  st.write("To examine this, we will be using the **multiple run** model, for a **poor** distribution, we will change the **number of samples**, from 3 to 10"
+  st.write("To examine this, we will be using the **multiple run** model, for a **poor** distribution, we will change the **number of samples**, from 3 to 10")
   st.image("exampleBU.png", caption="Case study: effect of increasing number of sample on BU results")
