@@ -147,7 +147,7 @@ def blender2D(blenderSize, fillRatio,thiefSize, distribution, DL=20, particleSiz
     
     #Visualize
     if visualize == True:
-        figure, ax = plt.subplots(figsize=(10,10))
+        figure, ax = plt.subplots(figsize=(5,5))
         for row,value in toSample.items():
             blenderArray[row:row+yAxisSizeThief,value:value+xAxisSizeThief] = np.nan
         cmap = matplotlib.cm.binary.copy()
