@@ -10,16 +10,16 @@ import math
 #create function to return the distance from 100% assay for a given set of parameters  
 
 def blender2D(blenderSize, fillRatio,thiefSize, distribution, DL=20, particleSize=100, percentPurityOfDS=100, visualize=False, clumpiness = 0, clumpSize = 1000, verbose = True, numSamples = 3):
-    amountOfPowder = (blenderSize * fillRatio) #mL or cm3
-    particleSizeInCm = particleSize / 100000 #cm 
+    volumeOfPowder = (blenderSize * fillRatio) #mL or cm3
+    particleVolumeInCubicCm = particleSize / 100000 #cm 
 
     #number of particles that could fit in blender, assuming they are packed in a square
-    xAxisSize = math.ceil(math.sqrt(amountOfPowder/particleSizeInCm))
-    yAxisSize = math.ceil(math.sqrt(amountOfPowder/particleSizeInCm))
+    xAxisSize = math.ceil(math.sqrt(volumeOfPowder/particleVolumeInCubicCm))
+    yAxisSize = math.ceil(math.sqrt(volumeOfPowder/particleVolumeInCubicCm))
 
     #we'll assume that sample thief is square, this will tell us how many particles to average per sample
-    xAxisSizeThief = math.ceil(math.sqrt(thiefSize/particleSizeInCm))
-    yAxisSizeThief = math.ceil(math.sqrt(thiefSize/particleSizeInCm))
+    xAxisSizeThief = math.ceil(math.sqrt(thiefSize/particleVolumeInCubicCm))
+    yAxisSizeThief = math.ceil(math.sqrt(thiefSize/particleVolumeInCubicCm))
 
     placeholderArray = np.zeros((xAxisSize, yAxisSize)) # Create a 2D array of all 0's
     yAxisHalf = int(yAxisSize/2)
@@ -47,8 +47,8 @@ def blender2D(blenderSize, fillRatio,thiefSize, distribution, DL=20, particleSiz
             numberDSparticles = (xAxisSize**2) * (DL/100)
             clumpedParticles = numberDSparticles * (clumpiness/10)
             clumpSize = 1000 #um
-            clumpSizeInCm = clumpSize / 10000
-            numParticlesPerClump = int(clumpSizeInCm/ (particleSizeInCm))
+            clumpVolumeInCubicCm = clumpSize / 10000
+            numParticlesPerClump = int(clumpVolumeInCubicCm/ (particleVolumeInCubicCm))
             numClumps = int(clumpedParticles/numParticlesPerClump)
             if verbose == True:
                 with st.spinner("number of clumps: " + str(numClumps)):
