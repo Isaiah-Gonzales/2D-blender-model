@@ -9,7 +9,7 @@ import math
 
 #create function to return the distance from 100% assay for a given set of parameters  
 
-def blender2D(blenderSize, fillRatio,thiefSize, distribution, DL=20, particleSize=25, percentPurityOfDS=100, visualize=False, clumpiness = 0, clumpSize = 1000, verbose = True, numSamples = 3):
+def blender2D(blenderSize, fillRatio,thiefSize, distribution, DL=20, particleSize=70, percentPurityOfDS=100, visualize=False, clumpiness = 0, clumpSize = 1000, verbose = True, numSamples = 3):
     volumeOfPowder = (blenderSize * fillRatio) #mL or cm3
     particleVolumeInCubicCm = particleSize / 100000 #cm 
 
