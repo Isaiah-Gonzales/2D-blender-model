@@ -145,5 +145,5 @@ with tab3:
     st.write("**Unmixed**: The particles on the bottom of the blender are replaced with DS particles.")
     st.write("**Random**: The particles are randomly replaced with DS particles until the total number of DS particles is reached.")
     st.write("**Uniform**: The particles in the blender are arranged in a 1D list. Then, the frequency of DS particles is calculated by dividing 100 by the DL%. IE: 100/20% gives you 5, meaning 1 in every 5 particles should be a DS particles. The DS particles are then equally dispersed based on their frequency")
-    st.write("**Poor**: The number of clumped particles is calculated by multiplying the number of DS particles by (*clumpiness*/10). The number of clumps is calculated by dividing the *number of clumped particles* by the *number of particles that could fit in a clump*. The clumps are then dispersed in the blender, then the remaining DS particles are dispersed in the blender.)
+    st.write("**Poor**: The number of clumped particles is calculated by multiplying the number of DS particles by (*clumpiness*/10). The number of clumps is calculated by dividing the *number of clumped particles* by the *number of particles that could fit in a clump*. The clumps are then dispersed in the blender, then the remaining DS particles are dispersed in the blender.")
 
